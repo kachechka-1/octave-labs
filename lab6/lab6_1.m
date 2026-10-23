@@ -5,25 +5,6 @@
 clc; clear; close all;
 
 disp('ЛАБОРАТОРНА РОБОТА № 6. РОЗГАЛУЖЕНІ ПРОЦЕСИ. ЗАВДАННЯ 1. ВАРІАНТ № 4');
-
-%% Спосіб 1. Оператор if ... elseif ... else (input / disp)
-x = input('Введіть x = ');
-
-if x > 2
-    y = 2.3 * nthroot(x - 1.3, 3) + sin(x)^2;
-    branch = 1;
-elseif (x >= -2) & (x <= 2)
-    y = acos(x / 2) + 2^(3 * x);
-    branch = 2;
-else
-    y = abs(x)^sin(x) - log10(abs(x + 1.5));
-    branch = 3;
-end
-
-fprintf('Обчислено за гілкою %d\n', branch);
-disp(sprintf('y = %g;', y));
-
-%% Спосіб 2. Діалогове вікно (inputdlg)
 prompt    = {'Введіть x:', 'Результат y:'};
 dlg_title = 'Лабораторна № 6. Розгалуження';
 num_lines = 1;
