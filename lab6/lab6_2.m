@@ -20,32 +20,22 @@ for k = 1 : size(K, 1)
     D = b^2 - 4*a*c;
     fprintf('D = %.3f\n', D);
 
-    % Визначення випадку для оператора switch
-    if D < 0
-        case_idx = -1;
-    elseif abs(D) < 1e-9          % допуск для порівняння з нулем
-        case_idx = 0;
-    else
-        case_idx = 1;
-    end
-
-    switch case_idx
-        case -1   % D < 0
+    % Вибір формули: switch true
+    switch true
+        case D < 0
             y = a^2 - 9*b*c;
             fprintf('Корені відсутні (D < 0)\n');
             fprintf('y = a^2 - 9bc = %.3f\n', y);
-        case 0    % D = 0
+        case abs(D) < 1e-9          % D = 0 бо воно його зберігає з округленям як 0.000000001 тому не просто d == 0
             x1 = -b / (2*a);
             y = 4 * x1;
             fprintf('Корінь: x1 = x2 = %.3f\n', x1);
             fprintf('y = 4*x1 = %.3f\n', y);
-        case 1    % D > 0
+        otherwise                   % D > 0
             x1 = (-b - sqrt(D)) / (2*a);
             x2 = (-b + sqrt(D)) / (2*a);
             y = x2 * sin(x1);
             fprintf('Корені рівняння: x1 = %.3f, x2 = %.3f\n', x1, x2);
             fprintf('y = x2*sin(x1) = %.3f\n', y);
-        otherwise
-            disp('Помилка логіки');
     end
 end
