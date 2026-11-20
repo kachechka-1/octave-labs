@@ -3,7 +3,10 @@
 clc; clear;
 
 % Введення початкових даних
-n = inputdlg({'N =', 'x =', 'S ='}, 'Задача 4', 1, {'20', '0.54', ''});
+n = inputdlg({'N =', 'x =', 'S ='}, 'Завдання 1', 1, {'20', '0.54', ''});
+if isempty(n)          % натиснуто Cancel або вікно закрито
+    return;
+end
 N = str2double(n(1,1));
 x = str2double(n(2,1));
 
@@ -19,4 +22,4 @@ end
 N = num2str(N);
 x = num2str(x);
 S = num2str(S);
-n = inputdlg({'N =', 'x =', 'S ='}, 'Задача 4', 1, {N, x, S});
+n = inputdlg({'N =', 'x =', 'S ='}, 'Завдання 1', 1, {N, x, S});
