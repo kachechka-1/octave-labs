@@ -20,9 +20,9 @@ function SolveButtonPushed(app)
   lb = zeros(numel(f), 1);
   ctype = repmat('U', 1, numel(b));          % усі обмеження вигляду A*x <= b
   vartype = repmat('C', 1, numel(f));        % змінні неперервні
-  [x, fval, err] = glpk(-f(:), A, b(:), lb, [], ctype, vartype, 1);
+  [x, fval, err, extra] = glpk(-f(:), A, b(:), lb, [], ctype, vartype, 1);
 
-  if err ~= 0 || isnan(fval)
+  if err ~= 0 || extra.status ~= 5 || isnan(fval)
     set([app.x1EditField app.x2EditField app.FvalEditField], 'String', 'розв''язку немає');
     return;
   end
