@@ -11,7 +11,7 @@ function SolveButtonPushed(app)
   A = str2num(get(app.AEditField, 'String'));
   b = str2num(get(app.bEditField, 'String'));
 
-  if isempty(f) || isempty(A) || isempty(b) || numel(f) ~= columns(A) || numel(b) ~= rows(A)
+  if isempty(f) || isempty(A) || isempty(b) || numel(f) ~= 2 || numel(f) ~= size(A, 2) || numel(b) ~= size(A, 1)
     set([app.x1EditField app.x2EditField app.FvalEditField], 'String', 'помилка в даних');
     return;
   end
